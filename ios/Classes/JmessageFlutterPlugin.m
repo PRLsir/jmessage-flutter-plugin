@@ -342,10 +342,6 @@ typedef void (^JMSGConversationCallback)(JMSGConversation *conversation,NSError 
   return optionlContent;
 }
 
-
-
-
-
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   JMLog(@"Action - handleMethodCall:: method =%@",call.method);
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
@@ -480,21 +476,7 @@ typedef void (^JMSGConversationCallback)(JMSGConversation *conversation,NSError 
     [self enterConversation:call result:result];
   } else if([@"exitConversation" isEqualToString:call.method]) {
     [self exitConversation:call result:result];
-  } else if([@"getConversation" isEqualToString:call.method]) {
-    [self getConversation:call result:result];
-  } else if([@"getConversations" isEqualToString:call.method]) {
-    [self getConversations:call result:result];
-  } else if([@"resetUnreadMessageCount" isEqualToString:call.method]) {
-    [self resetUnreadMessageCount:call result:result];
-  } else if([@"transferGroupOwner" isEqualToString:call.method]) {
-    [self transferGroupOwner:call result:result];
-  } else if([@"setGroupMemberSilence" isEqualToString:call.method]) {
-    [self setGroupMemberSilence:call result:result];
-  } else if([@"enterConversation" isEqualToString:call.method]) {
-    [self enterConversation:call result:result];
-  } else if([@"exitConversation" isEqualToString:call.method]) {
-    [self exitConversation:call result:result];
-  } else if([@"getConversation" isEqualToString:call.method]) {
+  }else if([@"getConversation" isEqualToString:call.method]) {
     [self getConversation:call result:result];
   } else if([@"getConversations" isEqualToString:call.method]) {
     [self getConversations:call result:result];
@@ -940,6 +922,7 @@ typedef void (^JMSGConversationCallback)(JMSGConversation *conversation,NSError 
     self.draftMessageCache[message.msgId] = message;
     result([message messageToDictionary]);
   }
+    
 }
 
 - (void)sendDraftMessage:(FlutterMethodCall*)call result:(FlutterResult)result {

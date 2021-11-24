@@ -2048,7 +2048,7 @@ class JMNormalMessage {
   }
 
   JMNormalMessage.fromJson(Map<dynamic, dynamic> json)
-      : id = json['id'],
+      : id = json['id'].cast,
         createTime = json['createTime'],
         serverMessageId = json['serverMessageId'],
         isSend = json['isSend'],
@@ -2417,15 +2417,15 @@ class JMGroupInfo {
   }
 
   JMGroupInfo.fromJson(Map<dynamic, dynamic> json)
-      : id = json['id'],
-        name = json['name'],
-        desc = json['desc'],
-        level = json['level'],
-        owner = json['owner'],
-        ownerAppKey = json['ownerAppKey'],
-        maxMemberCount = json['maxMemberCount'],
-        isNoDisturb = json['isNoDisturb'],
-        isBlocked = json['isBlocked'],
+      : id = json['id']??"",
+        name = json['name']??"",
+        desc = json['desc']??"",
+        level = json['level']??0,
+        owner = json['owner']??"",
+        ownerAppKey = json['ownerAppKey']??"",
+        maxMemberCount = json['maxMemberCount']??0,
+        isNoDisturb = json['isNoDisturb']??false,//打扰
+        isBlocked = json['isBlocked']??false,//封锁
         groupType = getEnumFromString(JMGroupType.values, json['groupType']);
 
   Future<void> exitGroup({@required String? id}) async {
